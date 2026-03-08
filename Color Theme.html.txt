@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PAK-AR · Brand Color Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=Syncopate:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal: #029390;
+    --teal-light: #04bfbb;
+    --teal-dark: #016e6c;
+    --teal-faint: rgba(2,147,144,0.12);
+    --bg: #07090e;
+    --bg2: #0b0e15;
+    --surface: #10141e;
+    --border: #1a2030;
+    --text: #e4eaf5;
+    --muted: #556070;
+    --dim: #222838;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 72px 60px 56px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content:'';
+    position:absolute; top:-120px; right:-120px;
+    width:500px; height:500px;
+    background: radial-gradient(circle, rgba(2,147,144,0.12) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .h-eyebrow {
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.4em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:16px;
+  }
+  .h-title {
+    font-family:'Chakra Petch', sans-serif;
+    font-size:82px; font-weight:700; line-height:0.9;
+    letter-spacing:0.07em;
+    background: linear-gradient(120deg, #fff 40%, var(--teal-light) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .h-sub {
+    margin-top:16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--muted); letter-spacing:0.2em;
+  }
+  .h-swatch {
+    position:absolute; right:60px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:12px;
+  }
+  .h-swatch-circle {
+    width:96px; height:96px; border-radius:50%;
+    background:#029390;
+    box-shadow: 0 0 40px rgba(2,147,144,0.5), 0 0 80px rgba(2,147,144,0.2);
+  }
+  .h-swatch-hex {
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:0.1em; color:var(--teal-light);
+  }
+  .h-swatch-name {
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ─── BRIEF BAR ─── */
+  .brief {
+    display:grid; grid-template-columns:repeat(5,1fr);
+    gap:1px; background:var(--border); border-bottom:1px solid var(--border);
+  }
+  .brief-item { background:var(--bg2); padding:22px 28px; }
+  .brief-item .bl { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .brief-item .bv { font-family:'Chakra Petch',sans-serif; font-size:13px; font-weight:600; color:var(--teal-light); letter-spacing:0.05em; }
+
+  /* ─── SECTION ─── */
+  .section { padding:56px 60px; }
+  .section + .section { padding-top:0; }
+  .sec-head {
+    display:flex; align-items:center; gap:14px; margin-bottom:44px;
+  }
+  .sec-num { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--teal); letter-spacing:0.2em; }
+  .sec-title { font-family:'Syncopate',sans-serif; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; }
+  .sec-line { flex:1; height:1px; background:var(--border); }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle {
+    display:flex; gap:2px; margin-bottom:48px;
+    border:1px solid var(--border); padding:4px; width:fit-content;
+  }
+  .tt-btn {
+    padding:10px 28px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px;
+    letter-spacing:0.2em; text-transform:uppercase; cursor:pointer;
+    border:none; background:transparent; color:var(--muted);
+    transition:all 0.25s;
+  }
+  .tt-btn.active { background:var(--teal); color:#fff; }
+
+  /* ─── PALETTE THEME PANELS ─── */
+  .theme-panel { display:none; }
+  .theme-panel.active { display:block; }
+
+  /* ─── PALETTE STRIP ─── */
+  .palette-strip {
+    display:flex; gap:2px; margin-bottom:40px; height:120px;
+  }
+  .ps-swatch {
+    flex:1; position:relative; cursor:default;
+    transition: flex 0.3s ease;
+  }
+  .ps-swatch:hover { flex:2; }
+  .ps-swatch .ps-info {
+    position:absolute; bottom:0; left:0; right:0;
+    padding:10px 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  }
+  .ps-hex { font-family:'IBM Plex Mono',monospace; font-size:11px; color:#fff; letter-spacing:0.1em; }
+  .ps-name { font-size:9px; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.6); }
+
+  /* ─── COLOR CARDS ─── */
+  .color-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:40px; }
+  .color-card { background:var(--surface); border:1px solid var(--border); overflow:hidden; }
+  .cc-top { height:160px; position:relative; }
+  .cc-role-badge {
+    position:absolute; top:14px; left:14px;
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    letter-spacing:0.2em; text-transform:uppercase;
+    padding:5px 10px; background:rgba(0,0,0,0.5); color:#fff;
+  }
+  .cc-body { padding:24px; }
+  .cc-hex { font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:600; margin-bottom:6px; }
+  .cc-name { font-family:'Chakra Petch',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.08em; margin-bottom:12px; }
+  .cc-desc { font-size:13px; line-height:1.7; color:#6678a0; }
+  .cc-usage { margin-top:16px; }
+  .cc-usage-label { font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .cc-tag { display:inline-block; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; padding:3px 9px; border:1px solid var(--border); color:var(--muted); margin:2px 2px 2px 0; }
+
+  /* ─── COMBINATION SHOWCASE ─── */
+  .combos { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:40px; }
+  .combo-card { padding:36px; position:relative; overflow:hidden; }
+  .combo-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:20px; opacity:0.6; }
+  .combo-brand { font-family:'Chakra Petch',sans-serif; font-size:48px; font-weight:700; letter-spacing:0.08em; line-height:1; margin-bottom:8px; }
+  .combo-tag-line { font-size:12px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.6; }
+  .combo-cta {
+    display:inline-block; margin-top:24px;
+    padding:10px 24px; font-family:'IBM Plex Mono',monospace;
+    font-size:10px; letter-spacing:0.2em; text-transform:uppercase; cursor:default;
+  }
+
+  /* ─── DO / DON'T ─── */
+  .dos-donts { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+  .dd-panel { padding:28px 32px; }
+  .dd-title { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; margin-bottom:18px; }
+  .dd-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; font-size:13px; line-height:1.6; color:#7788aa; }
+  .dd-icon { font-size:14px; margin-top:1px; flex-shrink:0; }
+
+  /* ─── PSYCHOLOGY ─── */
+  .psych-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .psych-card { background:var(--surface); border:1px solid var(--border); padding:28px; }
+  .psych-icon { font-size:28px; margin-bottom:14px; }
+  .psych-title { font-family:'Chakra Petch',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.06em; color:var(--teal-light); margin-bottom:10px; }
+  .psych-desc { font-size:13px; line-height:1.75; color:#6678a0; }
+
+  /* ─── VERDICT ─── */
+  .verdict {
+    margin:0 60px 60px;
+    background: linear-gradient(135deg, #0b1820, #071414);
+    border:1px solid var(--teal-dark); padding:48px;
+    position:relative; overflow:hidden;
+  }
+  .verdict::before {
+    content:'';
+    position:absolute; top:-80px; right:-80px;
+    width:350px; height:350px;
+    background: radial-gradient(circle, rgba(2,147,144,0.1) 0%, transparent 70%);
+  }
+  .verdict-label { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--teal); margin-bottom:18px; }
+  .verdict-heading { font-family:'Chakra Petch',sans-serif; font-size:36px; font-weight:700; letter-spacing:0.06em; color:#fff; margin-bottom:20px; }
+  .verdict-body { font-size:14px; line-height:1.85; color:#7a90bb; max-width:720px; }
+  .verdict-body strong { color:#c0d0e8; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top:1px solid var(--border); padding:28px 60px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .f-brand { font-family:'Syncopate',sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--muted); }
+  .f-note { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  .color-card, .combo-card, .psych-card { animation: fadeUp 0.5s ease both; }
+
+  @media(max-width:768px){
+    header{padding:48px 24px 40px;} .h-title{font-size:52px;} .h-swatch{display:none;}
+    .brief{grid-template-columns:1fr 1fr;} .section{padding:36px 24px;}
+    .color-cards{grid-template-columns:1fr;} .combos{grid-template-columns:1fr;}
+    .dos-donts{grid-template-columns:1fr;} .psych-grid{grid-template-columns:1fr;}
+    .verdict{margin:0 24px 40px; padding:32px 24px;} footer{padding:24px; flex-direction:column; gap:10px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="h-eyebrow">Brand Color Report · 2025</div>
+  <div class="h-title">PAK-AR</div>
+  <div class="h-sub">Primary Teal #029390 · Dual Theme System · Minimal Palette</div>
+  <div class="h-swatch">
+    <div class="h-swatch-circle"></div>
+    <div class="h-swatch-hex">#029390</div>
+    <div class="h-swatch-name">Core Teal</div>
+  </div>
+</header>
+
+<!-- BRIEF -->
+<div class="brief">
+  <div class="brief-item"><div class="bl">Primary Color</div><div class="bv">#029390 Teal</div></div>
+  <div class="brief-item"><div class="bl">Role</div><div class="bv">Dominant · All Touchpoints</div></div>
+  <div class="brief-item"><div class="bl">Palette Size</div><div class="bv">Minimal · 2–3 Colors</div></div>
+  <div class="brief-item"><div class="bl">Themes</div><div class="bv">Gradient + High Contrast</div></div>
+  <div class="brief-item"><div class="bl">Goal</div><div class="bv">Innovation & Cutting-Edge</div></div>
+</div>
+
+<!-- COLOR PALETTES -->
+<div class="section">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Brand Color Palettes</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- TOGGLE -->
+  <div class="theme-toggle">
+    <button class="tt-btn active" onclick="switchTheme('gradient')">Gradient & Luminous</button>
+    <button class="tt-btn" onclick="switchTheme('contrast')">High Contrast</button>
+  </div>
+
+  <!-- ══ GRADIENT THEME ══ -->
+  <div class="theme-panel active" id="panel-gradient">
+
+    <div class="palette-strip">
+      <div class="ps-swatch" style="background:#029390;">
+        <div class="ps-info"><div class="ps-hex">#029390</div><div class="ps-name">Core Teal</div></div>
+      </div>
+      <div class="ps-swatch" style="background:linear-gradient(135deg,#029390,#04bfbb);">
+        <div class="ps-info"><div class="ps-hex">#04BFBB</div><div class="ps-name">Luminous Teal</div></div>
+      </div>
+      <div class="ps-swatch" style="background:#0a0f1a;">
+        <div class="ps-info"><div class="ps-hex">#0A0F1A</div><div class="ps-name">Deep Void</div></div>
+      </div>
+    </div>
+
+    <div class="color-cards">
+
+      <div class="color-card">
+        <div class="cc-top" style="background:linear-gradient(135deg,#029390,#04bfbb,#016e6c);">
+          <span class="cc-role-badge">Primary</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#029390;">#029390</div>
+          <div class="cc-name">Core Teal</div>
+          <div class="cc-desc">The anchor of the entire brand. A deep, saturated teal that reads as technological, precise, and forward-thinking. It carries authority without coldness — a rare balance for B2B tech.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Logo Mark</span>
+            <span class="cc-tag">CTAs</span>
+            <span class="cc-tag">Nav Bar</span>
+            <span class="cc-tag">Key UI Elements</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="cc-top" style="background:linear-gradient(135deg,#04bfbb,#06d9d5,#029390);">
+          <span class="cc-role-badge">Glow Accent</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#04bfbb;">#04BFBB</div>
+          <div class="cc-name">Luminous Teal</div>
+          <div class="cc-desc">A lighter, glowing extension of Core Teal. Used to create luminous gradients, hover states, and energy effects. It signals dynamism and the "live" quality of AR overlays in the real world.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Gradients</span>
+            <span class="cc-tag">Hover States</span>
+            <span class="cc-tag">Glow FX</span>
+            <span class="cc-tag">Illustrations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="cc-top" style="background:linear-gradient(135deg,#0a0f1a,#111828);">
+          <span class="cc-role-badge">Base</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#6688aa;">#0A0F1A</div>
+          <div class="cc-name">Deep Void</div>
+          <div class="cc-desc">An almost-black navy that serves as the canvas. It creates maximum contrast with the teal and reinforces the sense of operating in a high-tech, immersive digital environment. Think: AR headset display.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Backgrounds</span>
+            <span class="cc-tag">Dark UI Panels</span>
+            <span class="cc-tag">Hero Sections</span>
+            <span class="cc-tag">App Surfaces</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMBOS -->
+    <div class="combos">
+      <div class="combo-card" style="background:linear-gradient(135deg,#0a0f1a,#091515); border:1px solid #1a2530;">
+        <div class="combo-label">Dark + Glow · Hero Application</div>
+        <div class="combo-brand" style="background:linear-gradient(120deg,#04bfbb,#029390); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">PAK-AR</div>
+        <div class="combo-tag-line" style="color:#6688aa;">Augmented Reality · Enterprise Solutions</div>
+        <div class="combo-cta" style="background:linear-gradient(90deg,#029390,#04bfbb); color:#fff;">Get Started →</div>
+      </div>
+      <div class="combo-card" style="background:linear-gradient(135deg,#016e6c,#029390); border:1px solid #04bfbb30;">
+        <div class="combo-label">Teal Gradient · Brand Block</div>
+        <div class="combo-brand" style="color:#fff;">PAK-AR</div>
+        <div class="combo-tag-line" style="color:rgba(255,255,255,0.55);">See Beyond Reality</div>
+        <div class="combo-cta" style="border:1px solid rgba(255,255,255,0.4); color:#fff;">Learn More →</div>
+      </div>
+    </div>
+
+    <!-- DO / DON'T -->
+    <div class="dos-donts">
+      <div class="dd-panel" style="background:#0b1410; border:1px solid #1a3020;">
+        <div class="dd-title" style="color:#04bfbb;">✦ Do</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Use the teal-to-luminous gradient for hero backgrounds and feature highlights</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Apply glowing teal box-shadows on interactive elements to reinforce the AR aesthetic</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Keep backgrounds in the Deep Void family to let teal glow naturally</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Use white text only on teal or void backgrounds — never on light surfaces</div>
+      </div>
+      <div class="dd-panel" style="background:#140b0b; border:1px solid #301a1a;">
+        <div class="dd-title" style="color:#cc4444;">✕ Don't</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Never place teal on white backgrounds — it loses luminosity and reads as generic</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Avoid mixing the teal gradient with warm colors (orange, red) in this theme — it breaks the cool luminous identity</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Don't use multiple gradient directions in a single layout — pick one axis</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Never reduce teal opacity below 60% — it becomes muddy against dark backgrounds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HIGH CONTRAST THEME ══ -->
+  <div class="theme-panel" id="panel-contrast">
+
+    <div class="palette-strip">
+      <div class="ps-swatch" style="background:#029390;">
+        <div class="ps-info"><div class="ps-hex">#029390</div><div class="ps-name">Core Teal</div></div>
+      </div>
+      <div class="ps-swatch" style="background:#0a0a0a;">
+        <div class="ps-info"><div class="ps-hex">#0A0A0A</div><div class="ps-name">Absolute Black</div></div>
+      </div>
+      <div class="ps-swatch" style="background:#f5f7fa;">
+        <div class="ps-info" style="background:linear-gradient(to top,rgba(0,0,0,0.15),transparent)"><div class="ps-hex" style="color:#111;">#F5F7FA</div><div class="ps-name" style="color:rgba(0,0,0,0.5)">Pure White</div></div>
+      </div>
+    </div>
+
+    <div class="color-cards">
+
+      <div class="color-card">
+        <div class="cc-top" style="background:#029390; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Chakra Petch',sans-serif; font-size:52px; font-weight:700; color:#fff; letter-spacing:0.1em;">PAK-AR</span>
+          <span class="cc-role-badge">Primary</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#029390;">#029390</div>
+          <div class="cc-name">Core Teal</div>
+          <div class="cc-desc">Used as a solid, unmodified block — no gradients. In high-contrast mode, teal earns its power through stark placement against absolute black and white. It becomes a mark, a stamp of identity.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Logo BG Block</span>
+            <span class="cc-tag">CTA Buttons</span>
+            <span class="cc-tag">Section Dividers</span>
+            <span class="cc-tag">Highlight Bars</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="cc-top" style="background:#0a0a0a; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Chakra Petch',sans-serif; font-size:52px; font-weight:700; color:#029390; letter-spacing:0.1em;">PAK-AR</span>
+          <span class="cc-role-badge">Base</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#557;">#0A0A0A</div>
+          <div class="cc-name">Absolute Black</div>
+          <div class="cc-desc">True black — not navy, not charcoal. This is the backbone of the high-contrast system. It creates the harshest, most memorable contrast with teal, making PAK-AR feel bold, uncompromising, and enterprise-grade.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Primary Background</span>
+            <span class="cc-tag">Text on Light</span>
+            <span class="cc-tag">App Dark Mode</span>
+            <span class="cc-tag">Print</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-card">
+        <div class="cc-top" style="background:#f5f7fa; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Chakra Petch',sans-serif; font-size:52px; font-weight:700; color:#029390; letter-spacing:0.1em;">PAK-AR</span>
+          <span class="cc-role-badge">Light</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-hex" style="color:#aabbcc;">#F5F7FA</div>
+          <div class="cc-name">Pure White</div>
+          <div class="cc-desc">A near-white with a barely-there cool tint. It provides breathing room in the high-contrast system and enables an enterprise light-mode interface — clean, clinical, and credible for B2B documentation contexts.</div>
+          <div class="cc-usage">
+            <div class="cc-usage-label">Use For</div>
+            <span class="cc-tag">Light Mode BG</span>
+            <span class="cc-tag">Text on Teal/Black</span>
+            <span class="cc-tag">Decks & Docs</span>
+            <span class="cc-tag">Padding Space</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COMBOS -->
+    <div class="combos">
+      <div class="combo-card" style="background:#0a0a0a; border:1px solid #222;">
+        <div class="combo-label" style="color:#444;">Black Canvas · Enterprise UI</div>
+        <div class="combo-brand" style="color:#029390;">PAK-AR</div>
+        <div class="combo-tag-line" style="color:#444;">Augmented Reality · Enterprise Solutions</div>
+        <div class="combo-cta" style="background:#029390; color:#fff;">Request Demo →</div>
+      </div>
+      <div class="combo-card" style="background:#f5f7fa; border:1px solid #dde;">
+        <div class="combo-label" style="color:#aaa;">White Canvas · B2B Docs / Decks</div>
+        <div class="combo-brand" style="color:#029390;">PAK-AR</div>
+        <div class="combo-tag-line" style="color:#999;">See Beyond Reality</div>
+        <div class="combo-cta" style="border:2px solid #029390; color:#029390; background:transparent;">Learn More →</div>
+      </div>
+    </div>
+
+    <!-- DO / DON'T -->
+    <div class="dos-donts">
+      <div class="dd-panel" style="background:#0b1410; border:1px solid #1a3020;">
+        <div class="dd-title" style="color:#04bfbb;">✦ Do</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Use teal as solid blocks only — no gradients — to maximise graphic punch</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Allow generous white space around teal elements so they command full attention</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Use the 3-color system strictly: black canvas, teal signal, white space — no additional colors</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Apply black text on white backgrounds and white text on teal or black backgrounds only</div>
+      </div>
+      <div class="dd-panel" style="background:#140b0b; border:1px solid #301a1a;">
+        <div class="dd-title" style="color:#cc4444;">✕ Don't</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Never introduce gradients — they dilute the sharp, decisive character of this system</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Avoid grey tones — they soften the contrast and undermine the commanding visual language</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Don't use teal for large body text blocks — reserve it for signals, headlines, and identity marks only</div>
+        <div class="dd-item"><span class="dd-icon">→</span> Never use off-black (dark grey) as a substitute for Absolute Black — it reads as indecisive</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLOR PSYCHOLOGY -->
+<div class="section" style="padding-top:0;">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <span class="sec-title">Color Psychology · Why #029390 Works for PAK-AR</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="psych-grid">
+    <div class="psych-card">
+      <div class="psych-icon">🧠</div>
+      <div class="psych-title">Trust Architecture</div>
+      <div class="psych-desc">Teal sits at the intersection of blue (trust, stability) and green (growth, clarity). Enterprise buyers instinctively read it as a company that is both reliable and progressive — exactly what a B2B SaaS pitch requires.</div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-icon">⚡</div>
+      <div class="psych-title">Innovation Signal</div>
+      <div class="psych-desc">Unlike pure blue (conservative) or green (sustainability), teal reads as genuinely technological. It's the color of screens, sensors, and scanning lasers — making it uniquely authentic for an AR company.</div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-icon">🎯</div>
+      <div class="psych-title">Market Differentiation</div>
+      <div class="psych-desc">Most enterprise tech brands default to deep blue or charcoal. Teal is rare enough to stand out in a pitch deck or conference booth, while professional enough not to alarm conservative enterprise procurement teams.</div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-icon">👁</div>
+      <div class="psych-title">AR Visual Authenticity</div>
+      <div class="psych-desc">#029390 closely matches the optical color of digital AR overlays, HUD systems, and holographic UI in real AR hardware. Using this color makes PAK-AR's brand feel like it emerged from the technology itself.</div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-icon">🌐</div>
+      <div class="psych-title">Global Neutrality</div>
+      <div class="psych-desc">Teal carries no strong cultural associations in Western, Asian, or Middle Eastern markets — making it a safe, powerful global brand color for a Pakistani tech company with international B2B ambitions.</div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-icon">📊</div>
+      <div class="psych-title">Conversion Power</div>
+      <div class="psych-desc">Research consistently shows teal and cyan CTA buttons outperform generic blue in SaaS contexts because they are unexpected yet trustworthy. For PAK-AR's website, this translates directly into higher demo request rates.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict">
+  <div class="verdict-label">✦ Strategic Color Verdict</div>
+  <div class="verdict-heading">Two Themes. One Identity.</div>
+  <div class="verdict-body">
+    PAK-AR's color system operates as a <strong>dual-mode identity</strong> — both themes share the same Core Teal <strong>#029390</strong> as an unbreakable anchor, ensuring brand recognition regardless of context.<br><br>
+    Use the <strong>Gradient & Luminous theme</strong> for digital-first touchpoints — the website hero, app UI, social media ads, and product demos — where depth and energy reinforce the immersive nature of AR technology.<br><br>
+    Deploy the <strong>High Contrast theme</strong> for enterprise-facing materials — pitch decks, proposals, whitepapers, and trade show assets — where clarity, authority, and print-readiness are paramount.<br><br>
+    This dual-system approach is rare at the startup stage but signals <strong>typographic and chromatic maturity</strong> to enterprise clients — a powerful differentiator when PAK-AR is competing against larger, established AR vendors.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">PAK-AR · Brand Color Report · 2025</div>
+  <div class="f-note">Primary: #029390 · Gradient Theme · High Contrast Theme</div>
+</footer>
+
+<script>
+  function switchTheme(theme) {
+    document.querySelectorAll('.theme-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tt-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + theme).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
