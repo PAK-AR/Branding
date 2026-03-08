@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PAK-AR · Typography Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=Chakra+Petch:wght@400;600;700&family=Outfit:wght@300;400;600&family=Syncopate:wght@400;700&family=Exo+2:wght@300;400;700&family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080a0f;
+    --bg2: #0d1017;
+    --surface: #111520;
+    --border: #1e2535;
+    --accent: #00c8ff;
+    --accent2: #0066ff;
+    --gold: #f0c040;
+    --text: #e8edf5;
+    --muted: #5a6580;
+    --dim: #2a3348;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    padding: 80px 60px 60px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: 'TYPOGRAPHY';
+    position: absolute;
+    right: 40px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Syncopate', sans-serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.02);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .brand-label {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    letter-spacing: 0.08em;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .report-subtitle {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  /* BRIEF SUMMARY */
+  .brief {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .brief-item {
+    background: var(--bg2);
+    padding: 28px 32px;
+  }
+  .brief-item .label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .brief-item .value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 60px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .section-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+  }
+  .section-title {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* RECOMMENDATION CARDS */
+  .recs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  .rec-card:hover { border-color: var(--accent); }
+  .rec-card.active { border-color: var(--accent); }
+
+  .rec-header {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 36px;
+    cursor: pointer;
+  }
+
+  .rec-rank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--dim);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .rec-card.active .rec-rank,
+  .rec-card:hover .rec-rank { color: var(--accent); }
+
+  .rec-main { min-width: 0; }
+
+  .rec-font-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .rec-display {
+    line-height: 1;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rec-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .tag.highlight {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,200,255,0.05);
+  }
+
+  .rec-body {
+    display: none;
+    padding: 0 36px 36px;
+    border-top: 1px solid var(--border);
+  }
+  .rec-card.active .rec-body { display: block; }
+
+  .rec-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .info-block { }
+  .info-block .info-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .info-block p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #8899bb;
+  }
+
+  .pairing-box {
+    margin-top: 32px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+  }
+  .pairing-box .pairing-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .pairing-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .pairing-role {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 80px;
+  }
+  .pairing-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .pairing-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .verdict-bar {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(0,200,255,0.04), rgba(0,102,255,0.04));
+    border-left: 3px solid var(--accent);
+  }
+  .verdict-bar .v-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .verdict-bar p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #aabbcc;
+  }
+
+  /* USAGE MATRIX */
+  .matrix {
+    margin-top: 32px;
+  }
+  .matrix-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .matrix-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .matrix-use {
+    font-size: 12px;
+    color: #6677aa;
+    min-width: 160px;
+  }
+  .matrix-bar-track {
+    flex: 1;
+    height: 3px;
+    background: var(--dim);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .matrix-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px;
+  }
+  .matrix-score {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    min-width: 32px;
+    text-align: right;
+  }
+
+  /* FINAL RECOMMENDATION */
+  .final-rec {
+    margin: 0 60px 60px;
+    background: linear-gradient(135deg, #0d1520, #0a1218);
+    border: 1px solid var(--accent);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-rec::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
+  }
+  .final-rec .fr-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .final-rec .fr-heading {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .final-rec .fr-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
+  .final-rec p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #8899bb;
+    max-width: 680px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .f-brand {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+  }
+  footer .f-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* Animate in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .rec-card { animation: fadeUp 0.5s ease both; }
+  .rec-card:nth-child(1) { animation-delay: 0.1s; }
+  .rec-card:nth-child(2) { animation-delay: 0.2s; }
+  .rec-card:nth-child(3) { animation-delay: 0.3s; }
+  .rec-card:nth-child(4) { animation-delay: 0.4s; }
+  .rec-card:nth-child(5) { animation-delay: 0.5s; }
+
+  @media (max-width: 768px) {
+    header { padding: 48px 24px 40px; }
+    .brand-name { font-size: 56px; }
+    header::after { display: none; }
+    .brief { grid-template-columns: 1fr 1fr; }
+    .section { padding: 40px 24px; }
+    .rec-header { padding: 20px 20px; gap: 16px; }
+    .rec-body { padding: 0 20px 24px; }
+    .rec-body-grid { grid-template-columns: 1fr; }
+    .final-rec { margin: 0 24px 40px; padding: 32px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand-label">Typography Suggestion Report</div>
+  <div class="brand-name">PAK-AR</div>
+  <div class="report-subtitle">AR Technology · SaaS · B2B · 2025 Brand Identity</div>
+</header>
+
+<!-- BRIEF -->
+<div class="brief">
+  <div class="brief-item">
+    <div class="label">Sector</div>
+    <div class="value">Tech / AR SaaS</div>
+  </div>
+  <div class="brief-item">
+    <div class="label">Personality</div>
+    <div class="value">Bold · Futuristic · Professional</div>
+  </div>
+  <div class="brief-item">
+    <div class="label">Audience</div>
+    <div class="value">B2B Enterprises</div>
+  </div>
+  <div class="brief-item">
+    <div class="label">Mood</div>
+    <div class="value">Commanding & Authoritative</div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <span class="section-title">Top 5 Typography Recommendations</span>
+    <div class="section-line"></div>
+    <span class="section-number" style="font-size:10px; white-space:nowrap;">Click to expand</span>
+  </div>
+
+  <div class="recs-grid">
+
+    <!-- CARD 1 -->
+    <div class="rec-card active" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-rank">01</div>
+        <div class="rec-main">
+          <div class="rec-font-name">Chakra Petch + DM Sans</div>
+          <div class="rec-display" style="font-family:'Chakra Petch',sans-serif; font-size:42px; font-weight:700; letter-spacing:0.06em;">PAK-AR</div>
+        </div>
+        <div class="rec-tags">
+          <span class="tag highlight">Top Pick</span>
+          <span class="tag">Geometric · Technical</span>
+        </div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-body-grid">
+          <div class="info-block">
+            <div class="info-label">Background</div>
+            <p>Chakra Petch was designed by Cadson Demak, a Thai type foundry, as a technical, screen-optimised display face. Its angular terminals and precise geometry evoke precision engineering and digital interfaces — a natural fit for AR/XR technology companies.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Meaning & Symbolism</div>
+            <p>The sharp, clipped letterforms suggest augmented reality overlays, sensor grids, and heads-up displays. Every letter feels like it belongs inside a HUD — which is exactly what PAK-AR builds. The name "Chakra" itself connotes power cycles, adding subliminal depth.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Brand Impact</div>
+            <p>Immediately positions PAK-AR as a serious technical brand. B2B decision-makers perceive it as a company that understands precision. The font holds weight at large logo sizes and stays crisp in UI contexts.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Why Suitable for PAK-AR</div>
+            <p>It is the only mainstream Google font that authentically looks like it was made for an AR/XR brand without appearing gimmicky. The uppercase "PAK-AR" in Chakra Petch is exceptional — the A and R forms are architecturally distinct, giving the logo natural visual anchors.</p>
+          </div>
+        </div>
+        <div class="pairing-box">
+          <div class="pairing-label">Recommended Pairing</div>
+          <div class="pairing-row">
+            <span class="pairing-role">Display</span>
+            <span class="pairing-name" style="font-family:'Chakra Petch',sans-serif;">Chakra Petch Bold</span>
+            <span class="pairing-desc">— Logo, headlines, hero text</span>
+          </div>
+          <div class="pairing-row">
+            <span class="pairing-role">Body</span>
+            <span class="pairing-name" style="font-family:'DM Sans',sans-serif;">DM Sans Light / Regular</span>
+            <span class="pairing-desc">— UI copy, documentation, web content</span>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-title">Suitability by Use Case</div>
+          <div class="matrix-row"><span class="matrix-use">Logo & Identity</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:97%"></div></div><span class="matrix-score">97%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Website / App UI</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:90%"></div></div><span class="matrix-score">90%</span></div>
+          <div class="matrix-row"><span class="matrix-use">B2B Presentations</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:88%"></div></div><span class="matrix-score">88%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Social / Ads</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:85%"></div></div><span class="matrix-score">85%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="v-label">Final Verdict</div>
+          <p>The strongest all-around choice for PAK-AR. Chakra Petch's technical authority paired with DM Sans's clean readability creates a brand that feels both cutting-edge and enterprise-grade. Highly recommended as the primary option.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-rank">02</div>
+        <div class="rec-main">
+          <div class="rec-font-name">Syncopate + Barlow</div>
+          <div class="rec-display" style="font-family:'Syncopate',sans-serif; font-size:38px; font-weight:700; letter-spacing:0.12em;">PAK-AR</div>
+        </div>
+        <div class="rec-tags">
+          <span class="tag highlight">Strong Contender</span>
+          <span class="tag">Commanding · Minimal</span>
+        </div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-body-grid">
+          <div class="info-block">
+            <div class="info-label">Background</div>
+            <p>Syncopate by Google Fonts is an all-caps geometric typeface with wide letter-spacing and zero-compromise geometry. Used by aerospace, defence, and deep-tech companies seeking institutional gravitas without ornamentation.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Meaning & Symbolism</div>
+            <p>The name Syncopate implies rhythm, precision, and unexpected emphasis — mirroring how AR technology overlays digital rhythm onto the physical world. Its wide uppercase presence commands the page.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Brand Impact</div>
+            <p>Creates an almost institutional authority. "PAK-AR" in Syncopate reads like a defence contractor or aerospace agency — a powerful signal of credibility when pitching to large enterprise clients.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Why Suitable for PAK-AR</div>
+            <p>The all-caps nature means the hyphen in PAK-AR becomes a powerful visual element. The wide tracking gives the brand name a logo-quality appearance with zero additional design work. Perfect if PAK-AR wants to project authority above all else.</p>
+          </div>
+        </div>
+        <div class="pairing-box">
+          <div class="pairing-label">Recommended Pairing</div>
+          <div class="pairing-row">
+            <span class="pairing-role">Display</span>
+            <span class="pairing-name" style="font-family:'Syncopate',sans-serif;">Syncopate Bold</span>
+            <span class="pairing-desc">— Logo, key headlines only</span>
+          </div>
+          <div class="pairing-row">
+            <span class="pairing-role">Body</span>
+            <span class="pairing-name" style="font-family:'Barlow',sans-serif;">Barlow Light / Regular</span>
+            <span class="pairing-desc">— All body copy, UI text</span>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-title">Suitability by Use Case</div>
+          <div class="matrix-row"><span class="matrix-use">Logo & Identity</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:95%"></div></div><span class="matrix-score">95%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Website / App UI</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:72%"></div></div><span class="matrix-score">72%</span></div>
+          <div class="matrix-row"><span class="matrix-use">B2B Presentations</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:92%"></div></div><span class="matrix-score">92%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Social / Ads</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:88%"></div></div><span class="matrix-score">88%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="v-label">Final Verdict</div>
+          <p>Best choice if commanding authority is the #1 priority. Slightly less versatile for body text in web/app contexts, but unrivalled for logo mark and enterprise presentations. Pair exclusively with a clean body font like Barlow.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-rank">03</div>
+        <div class="rec-main">
+          <div class="rec-font-name">Exo 2 + Outfit</div>
+          <div class="rec-display" style="font-family:'Exo 2',sans-serif; font-size:44px; font-weight:700; letter-spacing:0.04em;">PAK-AR</div>
+        </div>
+        <div class="rec-tags">
+          <span class="tag highlight">Versatile System</span>
+          <span class="tag">Futuristic · Readable</span>
+        </div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-body-grid">
+          <div class="info-block">
+            <div class="info-label">Background</div>
+            <p>Exo 2 by Natanael Gama is a complete type family spanning 18 weights, designed explicitly for technology brands. It balances futuristic styling with practical legibility across display and text sizes — rare in the tech font category.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Meaning & Symbolism</div>
+            <p>"Exo" means outside or beyond — perfectly aligned with AR's premise of going beyond physical reality. The optical precision of its letterforms implies systematic, engineered thinking which resonates with enterprise buyers.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Brand Impact</div>
+            <p>The most scalable option in this list. A single Exo 2 family can handle everything from the logo to footnotes, creating exceptional brand consistency. Enterprise clients feel this consistency as a signal of systematic professionalism.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Why Suitable for PAK-AR</div>
+            <p>If PAK-AR plans to build extensive product documentation, enterprise decks, and a rich website, Exo 2's large weight range provides unmatched flexibility. It reads as futuristic without being alien — trustworthy and modern simultaneously.</p>
+          </div>
+        </div>
+        <div class="pairing-box">
+          <div class="pairing-label">Recommended Pairing</div>
+          <div class="pairing-row">
+            <span class="pairing-role">Display</span>
+            <span class="pairing-name" style="font-family:'Exo 2',sans-serif;">Exo 2 ExtraBold</span>
+            <span class="pairing-desc">— Logo, hero headlines</span>
+          </div>
+          <div class="pairing-row">
+            <span class="pairing-role">Body</span>
+            <span class="pairing-name" style="font-family:'Outfit',sans-serif;">Outfit Regular / Light</span>
+            <span class="pairing-desc">— Body copy, UI, documentation</span>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-title">Suitability by Use Case</div>
+          <div class="matrix-row"><span class="matrix-use">Logo & Identity</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:88%"></div></div><span class="matrix-score">88%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Website / App UI</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:95%"></div></div><span class="matrix-score">95%</span></div>
+          <div class="matrix-row"><span class="matrix-use">B2B Presentations</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:90%"></div></div><span class="matrix-score">90%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Social / Ads</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:82%"></div></div><span class="matrix-score">82%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="v-label">Final Verdict</div>
+          <p>The most practical, scalable choice for a growing startup. Best if PAK-AR wants one coherent typographic system across all touchpoints without managing multiple font families. Slightly less distinctive at logo scale than options 1 or 2.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-rank">04</div>
+        <div class="rec-main">
+          <div class="rec-font-name">Rajdhani + DM Sans</div>
+          <div class="rec-display" style="font-family:'Rajdhani',sans-serif; font-size:50px; font-weight:700; letter-spacing:0.06em;">PAK-AR</div>
+        </div>
+        <div class="rec-tags">
+          <span class="tag highlight">Regional Resonance</span>
+          <span class="tag">Bold · Structured</span>
+        </div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-body-grid">
+          <div class="info-block">
+            <div class="info-label">Background</div>
+            <p>Rajdhani by Indian Type Foundry draws on the geometry of Devanagari script traditions, reinterpreted as a Latin typeface. "Rajdhani" means capital city in Hindi/Urdu — evoking centres of power, governance, and authority.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Meaning & Symbolism</div>
+            <p>The subtle influence of South Asian script geometry in its letterforms gives Rajdhani a uniquely powerful quality that Western fonts lack. Without being culturally explicit, it carries a regional inheritance that differentiates PAK-AR from generic Western tech typography.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Brand Impact</div>
+            <p>Creates a distinctive visual identity that stands out in the global tech landscape while remaining globally legible. The font's structural boldness at display sizes is exceptional, giving PAK-AR a logo that reads confidently across all media.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Why Suitable for PAK-AR</div>
+            <p>For a Pakistani AR tech company expanding globally, Rajdhani offers a subtle nod to South Asian design heritage without alienating Western enterprise clients. It creates a point of difference that tells a richer story about where PAK-AR comes from.</p>
+          </div>
+        </div>
+        <div class="pairing-box">
+          <div class="pairing-label">Recommended Pairing</div>
+          <div class="pairing-row">
+            <span class="pairing-role">Display</span>
+            <span class="pairing-name" style="font-family:'Rajdhani',sans-serif;">Rajdhani Bold / SemiBold</span>
+            <span class="pairing-desc">— Logo, headlines, callouts</span>
+          </div>
+          <div class="pairing-row">
+            <span class="pairing-role">Body</span>
+            <span class="pairing-name" style="font-family:'DM Sans',sans-serif;">DM Sans Regular</span>
+            <span class="pairing-desc">— All body text, UI copy</span>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-title">Suitability by Use Case</div>
+          <div class="matrix-row"><span class="matrix-use">Logo & Identity</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:92%"></div></div><span class="matrix-score">92%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Website / App UI</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:85%"></div></div><span class="matrix-score">85%</span></div>
+          <div class="matrix-row"><span class="matrix-use">B2B Presentations</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:87%"></div></div><span class="matrix-score">87%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Social / Ads</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:90%"></div></div><span class="matrix-score">90%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="v-label">Final Verdict</div>
+          <p>A bold choice with a unique story. Best for a founding team that wants PAK-AR's identity to subtly reflect its origin while projecting global ambition. Rajdhani is underused in tech, making it highly distinctive in a crowded market.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="rec-card" onclick="toggle(this)">
+      <div class="rec-header">
+        <div class="rec-rank">05</div>
+        <div class="rec-main">
+          <div class="rec-font-name">Syne + IBM Plex Mono</div>
+          <div class="rec-display" style="font-family:'Syne',sans-serif; font-size:46px; font-weight:800; letter-spacing:0.03em;">PAK-AR</div>
+        </div>
+        <div class="rec-tags">
+          <span class="tag highlight">Avant-Garde</span>
+          <span class="tag">Disruptive · Technical</span>
+        </div>
+      </div>
+      <div class="rec-body">
+        <div class="rec-body-grid">
+          <div class="info-block">
+            <div class="info-label">Background</div>
+            <p>Syne was developed by Bonjour Monde for the Villa Arson contemporary art school. It has since been adopted by tech disruptors, creative studios, and next-gen SaaS companies who want to signal that they are building something genuinely new — not incremental.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Meaning & Symbolism</div>
+            <p>Syne's optical weight in its ExtraBold variant creates a sense of unstoppable forward momentum. Pairing it with IBM Plex Mono — IBM's technical programming typeface — creates a powerful duality: creative disruption backed by engineering rigour.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Brand Impact</div>
+            <p>Positions PAK-AR as a category-creator rather than a category-follower. Enterprise clients who value innovation over convention — think CTO-led buying decisions — respond strongly to this typographic confidence.</p>
+          </div>
+          <div class="info-block">
+            <div class="info-label">Why Suitable for PAK-AR</div>
+            <p>If PAK-AR's go-to-market is centered on disrupting how enterprises use AR — rather than just selling AR services — then Syne sends exactly that signal. The IBM Plex Mono pairing grounds the futurism with technical credibility, preventing the brand from feeling frivolous.</p>
+          </div>
+        </div>
+        <div class="pairing-box">
+          <div class="pairing-label">Recommended Pairing</div>
+          <div class="pairing-row">
+            <span class="pairing-role">Display</span>
+            <span class="pairing-name" style="font-family:'Syne',sans-serif;">Syne ExtraBold</span>
+            <span class="pairing-desc">— Logo, hero statements, feature names</span>
+          </div>
+          <div class="pairing-row">
+            <span class="pairing-role">Accent</span>
+            <span class="pairing-name" style="font-family:'IBM Plex Mono',monospace;">IBM Plex Mono</span>
+            <span class="pairing-desc">— Code, specs, data labels, technical UI</span>
+          </div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-title">Suitability by Use Case</div>
+          <div class="matrix-row"><span class="matrix-use">Logo & Identity</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:89%"></div></div><span class="matrix-score">89%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Website / App UI</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:93%"></div></div><span class="matrix-score">93%</span></div>
+          <div class="matrix-row"><span class="matrix-use">B2B Presentations</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:80%"></div></div><span class="matrix-score">80%</span></div>
+          <div class="matrix-row"><span class="matrix-use">Social / Ads</span><div class="matrix-bar-track"><div class="matrix-bar-fill" style="width:94%"></div></div><span class="matrix-score">94%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="v-label">Final Verdict</div>
+          <p>The highest-risk, highest-reward option. Perfect for a team that wants PAK-AR to feel like a Silicon Valley-calibre disruptor from day one. Slightly less conservative for traditional enterprise boardroom contexts, but exceptional for product-led growth strategies.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FINAL RECOMMENDATION -->
+<div class="final-rec">
+  <div class="fr-label">✦ Editor's Final Recommendation</div>
+  <div class="fr-heading" style="font-family:'Chakra Petch',sans-serif;">Chakra Petch + DM Sans</div>
+  <div class="fr-sub" style="font-family:'DM Sans',sans-serif;">The commanding choice for a B2B AR tech leader</div>
+  <p>
+    Based on PAK-AR's profile — an AR SaaS company targeting B2B enterprises, requiring a commanding, futuristic, and trustworthy presence — <strong style="color:#ccd6e8;">Chakra Petch Bold</strong> for display paired with <strong style="color:#ccd6e8;">DM Sans</strong> for body text is the strongest strategic choice. It is the only typeface in this list that was visually built for the AR/tech interface world, making it the most authentic expression of what PAK-AR does. The pairing balances authority with legibility at all scales — from a 200px logo to 12px UI copy — ensuring a coherent brand system from launch day forward.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">PAK-AR · Typography Report</div>
+  <div class="f-note">All fonts available via Google Fonts · Free for commercial use</div>
+</footer>
+
+<script>
+  function toggle(card) {
+    const isActive = card.classList.contains('active');
+    document.querySelectorAll('.rec-card').forEach(c => c.classList.remove('active'));
+    if (!isActive) card.classList.add('active');
+  }
+</script>
+</body>
+</html>
