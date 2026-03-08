@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PAK-AR · Logo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal:    #029390;
+    --teal-d:  #016e6c;
+    --teal-l:  #04bfbb;
+    --black:   #0a0a0a;
+    --white:   #f5f7fa;
+    --border:  #1e2830;
+    --muted:   #4a6060;
+    --surface: #111618;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 64px 60px 48px;
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  header::after {
+    content: 'LOGO';
+    position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+    font-family: 'Chakra Petch', sans-serif; font-size: 140px; font-weight: 700;
+    color: rgba(2,147,144,0.04); letter-spacing: 0.1em; pointer-events: none;
+  }
+  .h-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 0.4em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 14px;
+  }
+  .h-brand {
+    font-family: 'Chakra Petch', sans-serif; font-size: 80px; font-weight: 700;
+    letter-spacing: 0.08em; line-height: 0.9;
+    background: linear-gradient(120deg, #fff 40%, var(--teal-l));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .h-sub {
+    margin-top: 14px; font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.2em;
+  }
+
+  /* ── BRIEF STRIP ── */
+  .brief {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1px; background: var(--border); border-bottom: 1px solid var(--border);
+  }
+  .brief-item { background: #0d1214; padding: 20px 24px; }
+  .bl { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .bv { font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: var(--teal-l); }
+
+  /* ── SECTION ── */
+  .section { padding: 56px 60px; }
+  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
+  .sec-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.2em; }
+  .sec-title { font-family: 'Chakra Petch', sans-serif; font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── LOGO CARDS ── */
+  .logo-grid { display: flex; flex-direction: column; gap: 3px; }
+
+  .logo-card {
+    background: var(--surface); border: 1px solid var(--border);
+    overflow: hidden; cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  .logo-card:hover { border-color: var(--teal); }
+  .logo-card.active { border-color: var(--teal); }
+
+  .card-header {
+    display: grid; grid-template-columns: 56px 1fr 1fr auto;
+    align-items: center; gap: 0; cursor: pointer;
+  }
+
+  .card-num {
+    padding: 28px 0 28px 28px;
+    font-family: 'Chakra Petch', sans-serif; font-size: 44px; font-weight: 700;
+    color: #1e2830; line-height: 1; transition: color 0.3s;
+  }
+  .logo-card.active .card-num,
+  .logo-card:hover .card-num { color: var(--teal); }
+
+  /* ── LOGO PREVIEWS ── */
+  .preview-dark {
+    padding: 28px 40px;
+    background: #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 110px;
+    border-right: 1px solid var(--border);
+  }
+  .preview-light {
+    padding: 28px 40px;
+    background: #f5f7fa;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 110px;
+    border-right: 1px solid var(--border);
+  }
+
+  .card-meta { padding: 0 28px; }
+  .card-concept-name {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-family: 'Chakra Petch', sans-serif; font-size: 18px; font-weight: 600;
+    color: var(--white); letter-spacing: 0.04em;
+  }
+
+  .card-tags { display: flex; flex-direction: column; gap: 5px; padding: 0 28px 0 0; align-items: flex-end; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted);
+  }
+  .tag.hl { border-color: var(--teal); color: var(--teal); background: rgba(2,147,144,0.06); }
+
+  /* ── EXPANDED BODY ── */
+  .card-body {
+    display: none; border-top: 1px solid var(--border);
+    padding: 40px;
+  }
+  .logo-card.active .card-body { display: block; }
+
+  .body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  .info-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .info-text { font-size: 13px; line-height: 1.8; color: #7090a0; }
+
+  /* ── LARGE PREVIEW ── */
+  .big-previews {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+    margin-bottom: 36px;
+  }
+  .big-prev {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 40px 20px; gap: 16px; min-height: 180px;
+  }
+  .big-prev .prev-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+    letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.5;
+  }
+
+  /* ── ICON PREVIEW ── */
+  .icon-row {
+    display: flex; gap: 12px; align-items: center; margin-top: 24px; flex-wrap: wrap;
+  }
+  .icon-box {
+    width: 48px; height: 48px; display: flex; align-items: center;
+    justify-content: center; border-radius: 10px;
+  }
+  .icon-box.dark { background: #0a0a0a; border: 1px solid #222; }
+  .icon-box.light { background: #f5f7fa; border: 1px solid #dde; }
+  .icon-box.teal { background: #029390; }
+  .icon-size-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.15em; }
+
+  /* ── SCORE BARS ── */
+  .scores { margin-top: 28px; }
+  .score-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+  .score-label { font-size: 12px; color: #6080a0; min-width: 160px; }
+  .score-track { flex: 1; height: 3px; background: #1e2830; border-radius: 2px; overflow: hidden; }
+  .score-fill { height: 100%; background: linear-gradient(90deg, var(--teal-d), var(--teal-l)); border-radius: 2px; }
+  .score-val { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); min-width: 36px; text-align: right; }
+
+  /* ── VERDICT ── */
+  .verdict-bar {
+    margin-top: 28px; padding: 18px 22px;
+    background: rgba(2,147,144,0.05); border-left: 3px solid var(--teal);
+  }
+  .verdict-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--teal); margin-bottom: 7px; }
+  .verdict-text { font-size: 13px; line-height: 1.75; color: #8aacb8; }
+
+  /* ── FINAL REC ── */
+  .final-rec {
+    margin: 0 60px 60px; padding: 48px;
+    background: linear-gradient(135deg, #081414, #050e0e);
+    border: 1px solid var(--teal);
+    position: relative; overflow: hidden;
+  }
+  .final-rec::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(2,147,144,0.1) 0%, transparent 70%);
+  }
+  .fr-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+  .fr-title { font-family: 'Chakra Petch', sans-serif; font-size: 32px; font-weight: 700; color: #fff; letter-spacing: 0.06em; margin-bottom: 16px; }
+  .fr-body { font-size: 14px; line-height: 1.85; color: #7090a8; max-width: 700px; }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .f-l { font-family: 'Chakra Petch', sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--muted); }
+  .f-r { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #1e2830; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  .logo-card { animation: fadeUp 0.45s ease both; }
+  .logo-card:nth-child(1){animation-delay:0.05s}
+  .logo-card:nth-child(2){animation-delay:0.12s}
+  .logo-card:nth-child(3){animation-delay:0.19s}
+  .logo-card:nth-child(4){animation-delay:0.26s}
+  .logo-card:nth-child(5){animation-delay:0.33s}
+
+  @media(max-width:768px){
+    header{padding:48px 24px 36px;} .h-brand{font-size:52px;} header::after{display:none;}
+    .brief{grid-template-columns:1fr 1fr;} .section{padding:36px 24px;}
+    .card-header{grid-template-columns:48px 1fr;} .preview-dark,.preview-light{display:none;}
+    .body-grid{grid-template-columns:1fr;} .big-previews{grid-template-columns:1fr 1fr;}
+    .final-rec{margin:0 24px 40px;padding:28px 20px;} footer{padding:24px;flex-direction:column;gap:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-eyebrow">Logo Concept Report · 2025</div>
+  <div class="h-brand">PAK-AR</div>
+  <div class="h-sub">5 Logo Directions · Symbol + Wordmark · Abstract Mark · Chakra Petch · #029390</div>
+</header>
+
+<div class="brief">
+  <div class="brief-item"><div class="bl">Logo Type</div><div class="bv">Symbol + Wordmark / Abstract</div></div>
+  <div class="brief-item"><div class="bl">Shape Language</div><div class="bv">Layered & Dimensional</div></div>
+  <div class="brief-item"><div class="bl">Hidden Concept</div><div class="bv">Urdu 'Pakkar' Hook</div></div>
+  <div class="brief-item"><div class="bl">Impression</div><div class="bv">Bold · Futuristic</div></div>
+  <div class="brief-item"><div class="bl">Primary Use</div><div class="bv">App Icon · Avatar · Favicon</div></div>
+</div>
+
+<div class="section">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Top 5 Logo Concepts</span>
+    <div class="sec-line"></div>
+    <span class="sec-num" style="white-space:nowrap;font-size:9px;">Click to expand</span>
+  </div>
+
+  <div class="logo-grid">
+
+    <!-- ══ CONCEPT 01 ══ -->
+    <div class="logo-card active" onclick="toggle(this)">
+      <div class="card-header">
+        <div class="card-num">01</div>
+
+        <!-- Dark preview -->
+        <div class="preview-dark">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <!-- Layered AR bracket symbol -->
+            <g transform="translate(4,8)">
+              <!-- Outer bracket layer -->
+              <rect x="0" y="0" width="44" height="44" fill="none" stroke="#029390" stroke-width="2.5"/>
+              <!-- Middle layer offset -->
+              <rect x="5" y="5" width="34" height="34" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+              <!-- Inner core -->
+              <rect x="10" y="10" width="24" height="24" fill="#029390" opacity="0.15"/>
+              <!-- AR crosshair -->
+              <line x1="22" y1="2" x2="22" y2="8" stroke="#04bfbb" stroke-width="1.5"/>
+              <line x1="22" y1="36" x2="22" y2="42" stroke="#04bfbb" stroke-width="1.5"/>
+              <line x1="2" y1="22" x2="8" y2="22" stroke="#04bfbb" stroke-width="1.5"/>
+              <line x1="36" y1="22" x2="42" y2="22" stroke="#04bfbb" stroke-width="1.5"/>
+              <!-- Center dot -->
+              <circle cx="22" cy="22" r="3" fill="#029390"/>
+            </g>
+            <!-- Wordmark -->
+            <text x="60" y="26" font-family="Chakra Petch, monospace" font-size="22" font-weight="700" fill="#f5f7fa" letter-spacing="3">PAK</text>
+            <text x="60" y="26" font-family="Chakra Petch, monospace" font-size="22" font-weight="700" fill="#029390" letter-spacing="3" dx="49">-AR</text>
+            <text x="60" y="42" font-family="DM Sans, sans-serif" font-size="8" fill="#4a6060" letter-spacing="4">AUGMENTED REALITY</text>
+          </svg>
+        </div>
+
+        <!-- Light preview -->
+        <div class="preview-light">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <g transform="translate(4,8)">
+              <rect x="0" y="0" width="44" height="44" fill="none" stroke="#029390" stroke-width="2.5"/>
+              <rect x="5" y="5" width="34" height="34" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+              <rect x="10" y="10" width="24" height="24" fill="#029390" opacity="0.10"/>
+              <line x1="22" y1="2" x2="22" y2="8" stroke="#029390" stroke-width="1.5"/>
+              <line x1="22" y1="36" x2="22" y2="42" stroke="#029390" stroke-width="1.5"/>
+              <line x1="2" y1="22" x2="8" y2="22" stroke="#029390" stroke-width="1.5"/>
+              <line x1="36" y1="22" x2="42" y2="22" stroke="#029390" stroke-width="1.5"/>
+              <circle cx="22" cy="22" r="3" fill="#029390"/>
+            </g>
+            <text x="60" y="26" font-family="Chakra Petch, monospace" font-size="22" font-weight="700" fill="#0a0a0a" letter-spacing="3">PAK</text>
+            <text x="60" y="26" font-family="Chakra Petch, monospace" font-size="22" font-weight="700" fill="#029390" letter-spacing="3" dx="49">-AR</text>
+            <text x="60" y="42" font-family="DM Sans, sans-serif" font-size="8" fill="#888" letter-spacing="4">AUGMENTED REALITY</text>
+          </svg>
+        </div>
+
+        <div class="card-meta">
+          <div class="card-concept-name">Concept 01 · Symbol + Wordmark</div>
+          <div class="card-title">The AR Targeting Frame</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag hl">Top Pick</span>
+          <span class="tag">Layered · Technical</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="big-previews">
+          <div class="big-prev" style="background:#0a0a0a;">
+            <div class="prev-label">Dark · Primary</div>
+            <svg width="220" height="66" viewBox="0 0 220 66">
+              <g transform="translate(4,9)">
+                <rect x="0" y="0" width="48" height="48" fill="none" stroke="#029390" stroke-width="2.5"/>
+                <rect x="6" y="6" width="36" height="36" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+                <rect x="12" y="12" width="24" height="24" fill="#029390" opacity="0.15"/>
+                <line x1="24" y1="2" x2="24" y2="9" stroke="#04bfbb" stroke-width="2"/>
+                <line x1="24" y1="39" x2="24" y2="46" stroke="#04bfbb" stroke-width="2"/>
+                <line x1="2" y1="24" x2="9" y2="24" stroke="#04bfbb" stroke-width="2"/>
+                <line x1="39" y1="24" x2="46" y2="24" stroke="#04bfbb" stroke-width="2"/>
+                <circle cx="24" cy="24" r="3.5" fill="#029390"/>
+              </g>
+              <text x="66" y="30" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#f5f7fa" letter-spacing="3">PAK</text>
+              <text x="66" y="30" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#029390" letter-spacing="3" dx="57">-AR</text>
+              <text x="66" y="48" font-family="DM Sans,sans-serif" font-size="9" fill="#4a6060" letter-spacing="4">AUGMENTED REALITY</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#f5f7fa;">
+            <div class="prev-label" style="color:#999;">Light · Secondary</div>
+            <svg width="220" height="66" viewBox="0 0 220 66">
+              <g transform="translate(4,9)">
+                <rect x="0" y="0" width="48" height="48" fill="none" stroke="#029390" stroke-width="2.5"/>
+                <rect x="6" y="6" width="36" height="36" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+                <rect x="12" y="12" width="24" height="24" fill="#029390" opacity="0.10"/>
+                <line x1="24" y1="2" x2="24" y2="9" stroke="#029390" stroke-width="2"/>
+                <line x1="24" y1="39" x2="24" y2="46" stroke="#029390" stroke-width="2"/>
+                <line x1="2" y1="24" x2="9" y2="24" stroke="#029390" stroke-width="2"/>
+                <line x1="39" y1="24" x2="46" y2="24" stroke="#029390" stroke-width="2"/>
+                <circle cx="24" cy="24" r="3.5" fill="#029390"/>
+              </g>
+              <text x="66" y="30" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#0a0a0a" letter-spacing="3">PAK</text>
+              <text x="66" y="30" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#029390" letter-spacing="3" dx="57">-AR</text>
+              <text x="66" y="48" font-family="DM Sans,sans-serif" font-size="9" fill="#888" letter-spacing="4">AUGMENTED REALITY</text>
+            </svg>
+          </div>
+          <!-- App icon -->
+          <div class="big-prev" style="background:#111618;">
+            <div class="prev-label">App Icon · Avatar</div>
+            <div class="icon-row" style="justify-content:center;">
+              <div class="icon-box dark" style="width:64px;height:64px;border-radius:14px;">
+                <svg width="46" height="46" viewBox="0 0 46 46">
+                  <rect x="1" y="1" width="44" height="44" fill="none" stroke="#029390" stroke-width="2"/>
+                  <rect x="6" y="6" width="34" height="34" fill="none" stroke="#016e6c" stroke-width="1.2"/>
+                  <rect x="11" y="11" width="24" height="24" fill="#029390" opacity="0.18"/>
+                  <line x1="23" y1="2" x2="23" y2="8" stroke="#04bfbb" stroke-width="1.5"/>
+                  <line x1="23" y1="38" x2="23" y2="44" stroke="#04bfbb" stroke-width="1.5"/>
+                  <line x1="2" y1="23" x2="8" y2="23" stroke="#04bfbb" stroke-width="1.5"/>
+                  <line x1="38" y1="23" x2="44" y2="23" stroke="#04bfbb" stroke-width="1.5"/>
+                  <circle cx="23" cy="23" r="3.5" fill="#029390"/>
+                </svg>
+              </div>
+              <div class="icon-box teal" style="width:48px;height:48px;border-radius:10px;">
+                <svg width="36" height="36" viewBox="0 0 46 46">
+                  <rect x="1" y="1" width="44" height="44" fill="none" stroke="#fff" stroke-width="2"/>
+                  <rect x="7" y="7" width="32" height="32" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+                  <rect x="13" y="13" width="20" height="20" fill="rgba(255,255,255,0.15)"/>
+                  <line x1="23" y1="2" x2="23" y2="9" stroke="#fff" stroke-width="1.5"/>
+                  <line x1="23" y1="37" x2="23" y2="44" stroke="#fff" stroke-width="1.5"/>
+                  <line x1="2" y1="23" x2="9" y2="23" stroke="#fff" stroke-width="1.5"/>
+                  <line x1="37" y1="23" x2="44" y2="23" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="23" cy="23" r="3" fill="#fff"/>
+                </svg>
+              </div>
+              <div class="icon-box light" style="width:36px;height:36px;border-radius:8px;">
+                <svg width="28" height="28" viewBox="0 0 46 46">
+                  <rect x="1" y="1" width="44" height="44" fill="none" stroke="#029390" stroke-width="3"/>
+                  <rect x="8" y="8" width="30" height="30" fill="none" stroke="#016e6c" stroke-width="2"/>
+                  <circle cx="23" cy="23" r="4" fill="#029390"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-grid">
+          <div>
+            <div class="info-label">Concept & Background</div>
+            <p class="info-text">The AR Targeting Frame is inspired by the viewfinder/targeting reticle of an Augmented Reality HUD display. The three nested squares (outer frame, middle layer, inner glow) represent the layered depth of AR — the physical world, the digital overlay, and the focal point of attention. The crosshair lines echo scanning and precision alignment.</p>
+          </div>
+          <div>
+            <div class="info-label">The 'Pakkar' Hidden Hook</div>
+            <p class="info-text">The square frame with its grid structure visually echoes the Urdu letterform of "پ" (Pe) — the first letter of Pakkar — when the crosshairs and center dot are read as a script reference. To insiders, the mark "grips" the subject at the center, reinforcing the Pakkar (to seize) meaning without being literal.</p>
+          </div>
+          <div>
+            <div class="info-label">Why It Works for PAK-AR</div>
+            <p class="info-text">The nested square icon reduces beautifully to a 16×16 favicon and app icon while retaining all its meaning. The symbol + wordmark format allows the hyphen in PAK-AR to visually split into the icon and name — PAK [icon] AR. The teal-on-black rendering is exceptional at every scale.</p>
+          </div>
+          <div>
+            <div class="info-label">Brand Impact</div>
+            <p class="info-text">Immediately signals augmented reality without being generic. The layered frame structure communicates precision engineering and technological authority — exactly the right signal for B2B enterprise clients who need to trust a technology partner from the first glance.</p>
+          </div>
+        </div>
+
+        <div class="scores">
+          <div class="score-row"><span class="score-label">App Icon / Avatar</span><div class="score-track"><div class="score-fill" style="width:97%"></div></div><span class="score-val">97%</span></div>
+          <div class="score-row"><span class="score-label">Scalability</span><div class="score-track"><div class="score-fill" style="width:95%"></div></div><span class="score-val">95%</span></div>
+          <div class="score-row"><span class="score-label">Brand Memorability</span><div class="score-track"><div class="score-fill" style="width:93%"></div></div><span class="score-val">93%</span></div>
+          <div class="score-row"><span class="score-label">Pakkar Hook Strength</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div><span class="score-val">82%</span></div>
+          <div class="score-row"><span class="score-label">Enterprise Suitability</span><div class="score-track"><div class="score-fill" style="width:94%"></div></div><span class="score-val">94%</span></div>
+        </div>
+
+        <div class="verdict-bar">
+          <div class="verdict-label">Verdict</div>
+          <p class="verdict-text">The strongest all-around concept. The AR Targeting Frame is the only logo in this set that works perfectly at 16px favicon size AND at 300px hero scale with zero compromise. The symbol naturally separates PAK from AR, the hidden Pakkar hook is authentic, and it reads as a world-class AR tech brand from first glance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONCEPT 02 ══ -->
+    <div class="logo-card" onclick="toggle(this)">
+      <div class="card-header">
+        <div class="card-num">02</div>
+        <div class="preview-dark">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <!-- Layered hexagonal AR mark -->
+            <g transform="translate(6,6)">
+              <polygon points="24,0 48,12 48,36 24,48 0,36 0,12" fill="none" stroke="#029390" stroke-width="2.2"/>
+              <polygon points="24,6 42,15 42,33 24,42 6,33 6,15" fill="none" stroke="#016e6c" stroke-width="1.2"/>
+              <polygon points="24,13 36,19.5 36,30.5 24,37 12,30.5 12,19.5" fill="#029390" opacity="0.18"/>
+              <text x="24" y="29" font-family="Chakra Petch,monospace" font-size="11" font-weight="700" fill="#029390" text-anchor="middle" letter-spacing="0">AR</text>
+            </g>
+            <text x="66" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+            <text x="66" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#4a6060" letter-spacing="4">WEB AR PLATFORM</text>
+          </svg>
+        </div>
+        <div class="preview-light">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <g transform="translate(6,6)">
+              <polygon points="24,0 48,12 48,36 24,48 0,36 0,12" fill="none" stroke="#029390" stroke-width="2.2"/>
+              <polygon points="24,6 42,15 42,33 24,42 6,33 6,15" fill="none" stroke="#016e6c" stroke-width="1.2"/>
+              <polygon points="24,13 36,19.5 36,30.5 24,37 12,30.5 12,19.5" fill="#029390" opacity="0.12"/>
+              <text x="24" y="29" font-family="Chakra Petch,monospace" font-size="11" font-weight="700" fill="#029390" text-anchor="middle">AR</text>
+            </g>
+            <text x="66" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+            <text x="66" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#888" letter-spacing="4">WEB AR PLATFORM</text>
+          </svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-concept-name">Concept 02 · Symbol + Wordmark</div>
+          <div class="card-title">The Hexagonal AR Core</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag hl">Strong Contender</span>
+          <span class="tag">Geometric · Layered</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="big-previews">
+          <div class="big-prev" style="background:#0a0a0a;">
+            <div class="prev-label">Dark · Primary</div>
+            <svg width="230" height="70" viewBox="0 0 230 70">
+              <g transform="translate(6,6)">
+                <polygon points="28,0 56,14 56,42 28,56 0,42 0,14" fill="none" stroke="#029390" stroke-width="2.5"/>
+                <polygon points="28,7 49,18 49,40 28,51 7,40 7,18" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+                <polygon points="28,15 42,22 42,36 28,43 14,36 14,22" fill="#029390" opacity="0.2"/>
+                <text x="28" y="34" font-family="Chakra Petch,monospace" font-size="13" font-weight="700" fill="#029390" text-anchor="middle">AR</text>
+              </g>
+              <text x="74" y="32" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+              <text x="74" y="50" font-family="DM Sans,sans-serif" font-size="9" fill="#4a6060" letter-spacing="4">WEB AR PLATFORM</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#f5f7fa;">
+            <div class="prev-label" style="color:#999;">Light · Secondary</div>
+            <svg width="230" height="70" viewBox="0 0 230 70">
+              <g transform="translate(6,6)">
+                <polygon points="28,0 56,14 56,42 28,56 0,42 0,14" fill="none" stroke="#029390" stroke-width="2.5"/>
+                <polygon points="28,7 49,18 49,40 28,51 7,40 7,18" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+                <polygon points="28,15 42,22 42,36 28,43 14,36 14,22" fill="#029390" opacity="0.12"/>
+                <text x="28" y="34" font-family="Chakra Petch,monospace" font-size="13" font-weight="700" fill="#029390" text-anchor="middle">AR</text>
+              </g>
+              <text x="74" y="32" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+              <text x="74" y="50" font-family="DM Sans,sans-serif" font-size="9" fill="#888" letter-spacing="4">WEB AR PLATFORM</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#111618;">
+            <div class="prev-label">App Icon</div>
+            <div class="icon-row" style="justify-content:center;">
+              <div class="icon-box dark" style="width:64px;height:64px;border-radius:14px;">
+                <svg width="48" height="48" viewBox="0 0 56 56">
+                  <polygon points="28,2 54,15 54,41 28,54 2,41 2,15" fill="none" stroke="#029390" stroke-width="2.5"/>
+                  <polygon points="28,8 48,19 48,37 28,48 8,37 8,19" fill="none" stroke="#016e6c" stroke-width="1.5"/>
+                  <polygon points="28,16 42,23.5 42,34.5 28,42 14,34.5 14,23.5" fill="#029390" opacity="0.22"/>
+                  <text x="28" y="34" font-family="Chakra Petch,monospace" font-size="14" font-weight="700" fill="#029390" text-anchor="middle">AR</text>
+                </svg>
+              </div>
+              <div class="icon-box teal" style="width:48px;height:48px;border-radius:10px;">
+                <svg width="38" height="38" viewBox="0 0 56 56">
+                  <polygon points="28,2 54,15 54,41 28,54 2,41 2,15" fill="none" stroke="#fff" stroke-width="3"/>
+                  <polygon points="28,10 46,21 46,37 28,48 10,37 10,21" fill="rgba(255,255,255,0.2)"/>
+                  <text x="28" y="35" font-family="Chakra Petch,monospace" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">AR</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-grid">
+          <div>
+            <div class="info-label">Concept & Background</div>
+            <p class="info-text">The hexagon is the most structurally efficient shape in nature — used in everything from molecular chemistry to drone sensor arrays to QR code matrices. Three nested hexagons create a dimensional depth that perfectly represents AR layering: physical world, digital overlay, and the augmented focal core. The "AR" lettermark sits at the center as a powerful dual-purpose element.</p>
+          </div>
+          <div>
+            <div class="info-label">The 'Pakkar' Hidden Hook</div>
+            <p class="info-text">The three concentric hexagonal layers visually mirror the Urdu writing motion of "پَکَّڑ" (Pakkar) — a gripping, enclosing gesture. The innermost hexagon "holds" the AR mark at its center, embodying the concept of Pakkar (to grasp, to hold). The brand is literally gripping the AR technology at its core.</p>
+          </div>
+          <div>
+            <div class="info-label">Why It Works for PAK-AR</div>
+            <p class="info-text">The hexagon has a rich visual language in tech: blockchain, molecular science, sensor grids, honeycomb structures. It reads as systematic and engineered — ideal for a B2B WebAR platform. The "AR" embedded in the icon means the symbol works standalone as a powerful app icon, instantly communicating the brand's category.</p>
+          </div>
+          <div>
+            <div class="info-label">Brand Impact</div>
+            <p class="info-text">Memorably geometric and distinctive from any other AR company in Pakistan or globally. The layered hexagon occupies visual space differently from competitor logos, creating instant category ownership. Scales well from favicon to billboard.</p>
+          </div>
+        </div>
+        <div class="scores">
+          <div class="score-row"><span class="score-label">App Icon / Avatar</span><div class="score-track"><div class="score-fill" style="width:90%"></div></div><span class="score-val">90%</span></div>
+          <div class="score-row"><span class="score-label">Scalability</span><div class="score-track"><div class="score-fill" style="width:88%"></div></div><span class="score-val">88%</span></div>
+          <div class="score-row"><span class="score-label">Brand Memorability</span><div class="score-track"><div class="score-fill" style="width:92%"></div></div><span class="score-val">92%</span></div>
+          <div class="score-row"><span class="score-label">Pakkar Hook Strength</span><div class="score-track"><div class="score-fill" style="width:86%"></div></div><span class="score-val">86%</span></div>
+          <div class="score-row"><span class="score-label">Enterprise Suitability</span><div class="score-track"><div class="score-fill" style="width:89%"></div></div><span class="score-val">89%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-label">Verdict</div>
+          <p class="verdict-text">A powerful geometric identity with strong tech credibility. The hexagon shape is universally associated with engineering precision and natural systems. The "AR" lettermark inside the icon means this logo works solo as an app icon without any wordmark — a rare and valuable quality for a mobile-first brand like PAK-AR.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONCEPT 03 ══ -->
+    <div class="logo-card" onclick="toggle(this)">
+      <div class="card-header">
+        <div class="card-num">03</div>
+        <div class="preview-dark">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <!-- Abstract P letterform with AR overlay -->
+            <g transform="translate(4,6)">
+              <!-- Bold P structure -->
+              <rect x="0" y="0" width="6" height="48" fill="#029390"/>
+              <!-- P bowl - top -->
+              <path d="M6,0 Q32,0 32,14 Q32,28 6,28" fill="none" stroke="#029390" stroke-width="6" stroke-linecap="square"/>
+              <!-- AR overlay plane (layered) -->
+              <rect x="10" y="8" width="18" height="14" fill="none" stroke="#016e6c" stroke-width="1.2" stroke-dasharray="2,2"/>
+              <rect x="14" y="12" width="10" height="8" fill="#029390" opacity="0.3"/>
+              <!-- Scan line -->
+              <line x1="6" y1="28" x2="36" y2="28" stroke="#04bfbb" stroke-width="1.2"/>
+            </g>
+            <text x="56" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+            <text x="56" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#4a6060" letter-spacing="4">SEE IT IN AR</text>
+          </svg>
+        </div>
+        <div class="preview-light">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <g transform="translate(4,6)">
+              <rect x="0" y="0" width="6" height="48" fill="#029390"/>
+              <path d="M6,0 Q32,0 32,14 Q32,28 6,28" fill="none" stroke="#029390" stroke-width="6" stroke-linecap="square"/>
+              <rect x="10" y="8" width="18" height="14" fill="none" stroke="#016e6c" stroke-width="1.2" stroke-dasharray="2,2"/>
+              <rect x="14" y="12" width="10" height="8" fill="#029390" opacity="0.2"/>
+              <line x1="6" y1="28" x2="36" y2="28" stroke="#029390" stroke-width="1.2"/>
+            </g>
+            <text x="56" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+            <text x="56" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#888" letter-spacing="4">SEE IT IN AR</text>
+          </svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-concept-name">Concept 03 · Lettermark + Wordmark</div>
+          <div class="card-title">The P·AR Overlay</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag hl">Most Unique</span>
+          <span class="tag">Lettermark · Clever</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="big-previews">
+          <div class="big-prev" style="background:#0a0a0a;">
+            <div class="prev-label">Dark · Primary</div>
+            <svg width="220" height="70" viewBox="0 0 220 70">
+              <g transform="translate(4,8)">
+                <rect x="0" y="0" width="7" height="54" fill="#029390"/>
+                <path d="M7,0 Q38,0 38,16 Q38,32 7,32" fill="none" stroke="#029390" stroke-width="7" stroke-linecap="square"/>
+                <rect x="12" y="8" width="20" height="16" fill="none" stroke="#016e6c" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <rect x="16" y="12" width="12" height="8" fill="#029390" opacity="0.35"/>
+                <line x1="7" y1="32" x2="42" y2="32" stroke="#04bfbb" stroke-width="1.5"/>
+              </g>
+              <text x="60" y="34" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+              <text x="60" y="52" font-family="DM Sans,sans-serif" font-size="9" fill="#4a6060" letter-spacing="4">SEE IT IN AR</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#f5f7fa;">
+            <div class="prev-label" style="color:#999;">Light · Secondary</div>
+            <svg width="220" height="70" viewBox="0 0 220 70">
+              <g transform="translate(4,8)">
+                <rect x="0" y="0" width="7" height="54" fill="#029390"/>
+                <path d="M7,0 Q38,0 38,16 Q38,32 7,32" fill="none" stroke="#029390" stroke-width="7" stroke-linecap="square"/>
+                <rect x="12" y="8" width="20" height="16" fill="none" stroke="#016e6c" stroke-width="1.5" stroke-dasharray="3,2"/>
+                <rect x="16" y="12" width="12" height="8" fill="#029390" opacity="0.18"/>
+                <line x1="7" y1="32" x2="42" y2="32" stroke="#029390" stroke-width="1.5"/>
+              </g>
+              <text x="60" y="34" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+              <text x="60" y="52" font-family="DM Sans,sans-serif" font-size="9" fill="#888" letter-spacing="4">SEE IT IN AR</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#111618;">
+            <div class="prev-label">App Icon</div>
+            <div class="icon-row" style="justify-content:center;">
+              <div class="icon-box dark" style="width:64px;height:64px;border-radius:14px;overflow:hidden;">
+                <svg width="44" height="44" viewBox="0 0 44 44">
+                  <rect x="4" y="2" width="6" height="40" fill="#029390"/>
+                  <path d="M10,2 Q30,2 30,13 Q30,24 10,24" fill="none" stroke="#029390" stroke-width="6"/>
+                  <rect x="14" y="6" width="13" height="11" fill="none" stroke="#04bfbb" stroke-width="1.2" stroke-dasharray="2,1.5"/>
+                  <rect x="17" y="9" width="7" height="5" fill="#029390" opacity="0.4"/>
+                </svg>
+              </div>
+              <div class="icon-box teal" style="width:48px;height:48px;border-radius:10px;overflow:hidden;">
+                <svg width="36" height="36" viewBox="0 0 44 44">
+                  <rect x="4" y="2" width="6" height="40" fill="#fff"/>
+                  <path d="M10,2 Q30,2 30,13 Q30,24 10,24" fill="none" stroke="#fff" stroke-width="6"/>
+                  <rect x="14" y="6" width="13" height="11" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-dasharray="2,1.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-grid">
+          <div>
+            <div class="info-label">Concept & Background</div>
+            <p class="info-text">The P·AR Overlay takes the letter "P" — standing for both Pakistan and the phonetic start of "Pakkar" — and layers an AR scanning frame directly inside the bowl of the P. The dashed rectangular overlay inside the P represents a live WebAR scan in progress. The horizontal scan line below the bowl completes the scanning metaphor.</p>
+          </div>
+          <div>
+            <div class="info-label">The 'Pakkar' Hidden Hook</div>
+            <p class="info-text">This is the strongest Pakkar reference in the set. The "P" is literally the first letter of "Pakkar" (پَکَّڑ). The AR scan frame embedded within the P bowl represents the act of "Pakkar" — the brand seizing and capturing products in the AR frame. Every scan is a "Pakkar" — a grip on reality.</p>
+          </div>
+          <div>
+            <div class="info-label">Why It Works for PAK-AR</div>
+            <p class="info-text">The cleverness of embedding an AR frame inside the P creates a logo that rewards closer inspection — a powerful trait for social media where people slow down to look twice. The scan line below the bowl creates a natural baseline that makes the logo feel grounded and systematic.</p>
+          </div>
+          <div>
+            <div class="info-label">Brand Impact</div>
+            <p class="info-text">Highly ownable and unique in the AR industry globally. No competitor uses a lettermark-with-AR-overlay concept. The logo literally shows what the product does — it overlays AR onto reality — making it the most self-explanatory logo in this report.</p>
+          </div>
+        </div>
+        <div class="scores">
+          <div class="score-row"><span class="score-label">App Icon / Avatar</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div><span class="score-val">85%</span></div>
+          <div class="score-row"><span class="score-label">Scalability</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div><span class="score-val">82%</span></div>
+          <div class="score-row"><span class="score-label">Brand Memorability</span><div class="score-track"><div class="score-fill" style="width:96%"></div></div><span class="score-val">96%</span></div>
+          <div class="score-row"><span class="score-label">Pakkar Hook Strength</span><div class="score-track"><div class="score-fill" style="width:98%"></div></div><span class="score-val">98%</span></div>
+          <div class="score-row"><span class="score-label">Enterprise Suitability</span><div class="score-track"><div class="score-fill" style="width:84%"></div></div><span class="score-val">84%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-label">Verdict</div>
+          <p class="verdict-text">The most conceptually rich and ownable logo in this report. The Pakkar hook is the strongest here — the P literally grabs the AR frame. Best choice if brand storytelling and concept depth are the priority. Slightly more complex at very small icon sizes but remains distinctive and recognizable.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONCEPT 04 ══ -->
+    <div class="logo-card" onclick="toggle(this)">
+      <div class="card-header">
+        <div class="card-num">04</div>
+        <div class="preview-dark">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <!-- Abstract QR-corner mark -->
+            <g transform="translate(4,6)">
+              <!-- Top-left corner -->
+              <rect x="0" y="0" width="16" height="4" fill="#029390"/>
+              <rect x="0" y="0" width="4" height="16" fill="#029390"/>
+              <!-- Top-right corner -->
+              <rect x="32" y="0" width="16" height="4" fill="#029390"/>
+              <rect x="44" y="0" width="4" height="16" fill="#029390"/>
+              <!-- Bottom-left corner -->
+              <rect x="0" y="44" width="16" height="4" fill="#029390"/>
+              <rect x="0" y="32" width="4" height="16" fill="#029390"/>
+              <!-- Bottom-right corner -->
+              <rect x="32" y="44" width="16" height="4" fill="#029390"/>
+              <rect x="44" y="32" width="4" height="16" fill="#029390"/>
+              <!-- Inner grid dots -->
+              <rect x="10" y="10" width="6" height="6" fill="#016e6c"/>
+              <rect x="20" y="10" width="6" height="6" fill="#029390" opacity="0.5"/>
+              <rect x="32" y="10" width="6" height="6" fill="#016e6c"/>
+              <rect x="10" y="22" width="6" height="6" fill="#029390" opacity="0.5"/>
+              <rect x="20" y="22" width="6" height="6" fill="#029390"/>
+              <rect x="32" y="22" width="6" height="6" fill="#029390" opacity="0.3"/>
+              <rect x="10" y="32" width="6" height="6" fill="#016e6c"/>
+              <rect x="20" y="32" width="6" height="6" fill="#029390" opacity="0.4"/>
+              <rect x="32" y="32" width="6" height="6" fill="#029390"/>
+            </g>
+            <text x="66" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+            <text x="66" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#4a6060" letter-spacing="3">SCAN TO EXPERIENCE</text>
+          </svg>
+        </div>
+        <div class="preview-light">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <g transform="translate(4,6)">
+              <rect x="0" y="0" width="16" height="4" fill="#029390"/>
+              <rect x="0" y="0" width="4" height="16" fill="#029390"/>
+              <rect x="32" y="0" width="16" height="4" fill="#029390"/>
+              <rect x="44" y="0" width="4" height="16" fill="#029390"/>
+              <rect x="0" y="44" width="16" height="4" fill="#029390"/>
+              <rect x="0" y="32" width="4" height="16" fill="#029390"/>
+              <rect x="32" y="44" width="16" height="4" fill="#029390"/>
+              <rect x="44" y="32" width="4" height="16" fill="#029390"/>
+              <rect x="10" y="10" width="6" height="6" fill="#029390"/>
+              <rect x="20" y="10" width="6" height="6" fill="#029390" opacity="0.4"/>
+              <rect x="32" y="10" width="6" height="6" fill="#029390"/>
+              <rect x="10" y="22" width="6" height="6" fill="#029390" opacity="0.4"/>
+              <rect x="20" y="22" width="6" height="6" fill="#029390"/>
+              <rect x="32" y="22" width="6" height="6" fill="#029390" opacity="0.3"/>
+              <rect x="10" y="32" width="6" height="6" fill="#029390"/>
+              <rect x="20" y="32" width="6" height="6" fill="#029390" opacity="0.4"/>
+              <rect x="32" y="32" width="6" height="6" fill="#029390"/>
+            </g>
+            <text x="66" y="28" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+            <text x="66" y="42" font-family="DM Sans,sans-serif" font-size="8" fill="#888" letter-spacing="3">SCAN TO EXPERIENCE</text>
+          </svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-concept-name">Concept 04 · Abstract Mark</div>
+          <div class="card-title">The QR Portal Mark</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag hl">Most On-Brand</span>
+          <span class="tag">Abstract · Conceptual</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="big-previews">
+          <div class="big-prev" style="background:#0a0a0a;">
+            <div class="prev-label">Dark · Primary</div>
+            <svg width="230" height="70" viewBox="0 0 230 70">
+              <g transform="translate(4,8)">
+                <rect x="0" y="0" width="18" height="4" fill="#029390"/>
+                <rect x="0" y="0" width="4" height="18" fill="#029390"/>
+                <rect x="34" y="0" width="18" height="4" fill="#029390"/>
+                <rect x="48" y="0" width="4" height="18" fill="#029390"/>
+                <rect x="0" y="48" width="18" height="4" fill="#029390"/>
+                <rect x="0" y="34" width="4" height="18" fill="#029390"/>
+                <rect x="34" y="48" width="18" height="4" fill="#029390"/>
+                <rect x="48" y="34" width="4" height="18" fill="#029390"/>
+                <rect x="10" y="10" width="8" height="8" fill="#016e6c"/>
+                <rect x="22" y="10" width="8" height="8" fill="#029390" opacity="0.5"/>
+                <rect x="34" y="10" width="8" height="8" fill="#016e6c"/>
+                <rect x="10" y="22" width="8" height="8" fill="#029390" opacity="0.5"/>
+                <rect x="22" y="22" width="8" height="8" fill="#029390"/>
+                <rect x="34" y="22" width="8" height="8" fill="#029390" opacity="0.3"/>
+                <rect x="10" y="34" width="8" height="8" fill="#016e6c"/>
+                <rect x="22" y="34" width="8" height="8" fill="#029390" opacity="0.4"/>
+                <rect x="34" y="34" width="8" height="8" fill="#029390"/>
+              </g>
+              <text x="70" y="34" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#f5f7fa" letter-spacing="2">PAK-AR</text>
+              <text x="70" y="52" font-family="DM Sans,sans-serif" font-size="9" fill="#4a6060" letter-spacing="3">SCAN TO EXPERIENCE</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#f5f7fa;">
+            <div class="prev-label" style="color:#999;">Light · Secondary</div>
+            <svg width="230" height="70" viewBox="0 0 230 70">
+              <g transform="translate(4,8)">
+                <rect x="0" y="0" width="18" height="4" fill="#029390"/>
+                <rect x="0" y="0" width="4" height="18" fill="#029390"/>
+                <rect x="34" y="0" width="18" height="4" fill="#029390"/>
+                <rect x="48" y="0" width="4" height="18" fill="#029390"/>
+                <rect x="0" y="48" width="18" height="4" fill="#029390"/>
+                <rect x="0" y="34" width="4" height="18" fill="#029390"/>
+                <rect x="34" y="48" width="18" height="4" fill="#029390"/>
+                <rect x="48" y="34" width="4" height="18" fill="#029390"/>
+                <rect x="10" y="10" width="8" height="8" fill="#029390"/>
+                <rect x="22" y="10" width="8" height="8" fill="#029390" opacity="0.4"/>
+                <rect x="34" y="10" width="8" height="8" fill="#029390"/>
+                <rect x="10" y="22" width="8" height="8" fill="#029390" opacity="0.4"/>
+                <rect x="22" y="22" width="8" height="8" fill="#029390"/>
+                <rect x="34" y="22" width="8" height="8" fill="#029390" opacity="0.25"/>
+                <rect x="10" y="34" width="8" height="8" fill="#029390"/>
+                <rect x="22" y="34" width="8" height="8" fill="#029390" opacity="0.35"/>
+                <rect x="34" y="34" width="8" height="8" fill="#029390"/>
+              </g>
+              <text x="70" y="34" font-family="Chakra Petch,monospace" font-size="26" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK-AR</text>
+              <text x="70" y="52" font-family="DM Sans,sans-serif" font-size="9" fill="#888" letter-spacing="3">SCAN TO EXPERIENCE</text>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#111618;">
+            <div class="prev-label">App Icon</div>
+            <div class="icon-row" style="justify-content:center;">
+              <div class="icon-box dark" style="width:64px;height:64px;border-radius:14px;">
+                <svg width="48" height="48" viewBox="0 0 52 52">
+                  <rect x="0" y="0" width="16" height="4" fill="#029390"/>
+                  <rect x="0" y="0" width="4" height="16" fill="#029390"/>
+                  <rect x="36" y="0" width="16" height="4" fill="#029390"/>
+                  <rect x="48" y="0" width="4" height="16" fill="#029390"/>
+                  <rect x="0" y="48" width="16" height="4" fill="#029390"/>
+                  <rect x="0" y="36" width="4" height="16" fill="#029390"/>
+                  <rect x="36" y="48" width="16" height="4" fill="#029390"/>
+                  <rect x="48" y="36" width="4" height="16" fill="#029390"/>
+                  <rect x="10" y="10" width="8" height="8" fill="#016e6c"/>
+                  <rect x="22" y="10" width="8" height="8" fill="#029390" opacity="0.5"/>
+                  <rect x="34" y="10" width="8" height="8" fill="#016e6c"/>
+                  <rect x="10" y="22" width="8" height="8" fill="#029390" opacity="0.5"/>
+                  <rect x="22" y="22" width="8" height="8" fill="#029390"/>
+                  <rect x="34" y="22" width="8" height="8" fill="#029390" opacity="0.3"/>
+                  <rect x="10" y="34" width="8" height="8" fill="#016e6c"/>
+                  <rect x="22" y="34" width="8" height="8" fill="#029390" opacity="0.4"/>
+                  <rect x="34" y="34" width="8" height="8" fill="#029390"/>
+                </svg>
+              </div>
+              <div class="icon-box teal" style="width:48px;height:48px;border-radius:10px;">
+                <svg width="38" height="38" viewBox="0 0 52 52">
+                  <rect x="0" y="0" width="16" height="4" fill="#fff"/>
+                  <rect x="0" y="0" width="4" height="16" fill="#fff"/>
+                  <rect x="36" y="0" width="16" height="4" fill="#fff"/>
+                  <rect x="48" y="0" width="4" height="16" fill="#fff"/>
+                  <rect x="0" y="48" width="16" height="4" fill="#fff"/>
+                  <rect x="0" y="36" width="4" height="16" fill="#fff"/>
+                  <rect x="36" y="48" width="16" height="4" fill="#fff"/>
+                  <rect x="48" y="36" width="4" height="16" fill="#fff"/>
+                  <rect x="22" y="22" width="8" height="8" fill="#fff"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-grid">
+          <div>
+            <div class="info-label">Concept & Background</div>
+            <p class="info-text">The QR Portal Mark abstracts the QR code — PAK-AR's core product mechanism — into a brand symbol. It preserves the four corner "finder patterns" that make any QR code instantly recognizable, while replacing the internal data squares with a branded geometric composition. The result is a mark that IS the product concept.</p>
+          </div>
+          <div>
+            <div class="info-label">The 'Pakkar' Hidden Hook</div>
+            <p class="info-text">The four corner marks "grip" the center composition from all sides — a visual Pakkar in four directions. In Urdu typography, "پَکَّڑ" implies enclosure and control from multiple points. This mark literally holds and frames reality from four corners, mirroring how a QR code captures a portal into the AR world.</p>
+          </div>
+          <div>
+            <div class="info-label">Why It Works for PAK-AR</div>
+            <p class="info-text">The QR pattern is a cultural icon in Pakistan's digital-first SME market. Business owners recognize QR corners instantly — making this logo immediately legible as "the AR QR company." The abstract internal grid creates depth and layering while keeping the mark clean and modern.</p>
+          </div>
+          <div>
+            <div class="info-label">Brand Impact</div>
+            <p class="info-text">Most directly communicates PAK-AR's product — QR-to-AR experiences. The corner patterns create an unmistakable silhouette that reads at any size. The tagline "Scan to Experience" paired with this mark creates a complete brand narrative in one visual unit.</p>
+          </div>
+        </div>
+        <div class="scores">
+          <div class="score-row"><span class="score-label">App Icon / Avatar</span><div class="score-track"><div class="score-fill" style="width:92%"></div></div><span class="score-val">92%</span></div>
+          <div class="score-row"><span class="score-label">Scalability</span><div class="score-track"><div class="score-fill" style="width:94%"></div></div><span class="score-val">94%</span></div>
+          <div class="score-row"><span class="score-label">Brand Memorability</span><div class="score-track"><div class="score-fill" style="width:90%"></div></div><span class="score-val">90%</span></div>
+          <div class="score-row"><span class="score-label">Pakkar Hook Strength</span><div class="score-track"><div class="score-fill" style="width:88%"></div></div><span class="score-val">88%</span></div>
+          <div class="score-row"><span class="score-label">Enterprise Suitability</span><div class="score-track"><div class="score-fill" style="width:86%"></div></div><span class="score-val">86%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-label">Verdict</div>
+          <p class="verdict-text">The most product-authentic logo in this set. Anyone who sees a QR corner pattern immediately understands the scanning mechanism that powers PAK-AR. An excellent choice if instant product comprehension is the priority. The abstract internal grid gives it an ownable identity beyond a generic QR symbol.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONCEPT 05 ══ -->
+    <div class="logo-card" onclick="toggle(this)">
+      <div class="card-header">
+        <div class="card-num">05</div>
+        <div class="preview-dark">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <!-- Pure wordmark with layered hyphen treatment -->
+            <g transform="translate(2,8)">
+              <!-- Dimensional layered PAK -->
+              <text x="0" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#016e6c" letter-spacing="2" dx="1" dy="2">PAK</text>
+              <text x="0" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#029390" letter-spacing="2">PAK</text>
+              <!-- Hyphen as scan beam -->
+              <rect x="86" y="16" width="14" height="3" fill="#04bfbb"/>
+              <rect x="86" y="21" width="14" height="1.5" fill="#029390" opacity="0.5"/>
+              <rect x="86" y="25" width="14" height="1" fill="#016e6c" opacity="0.4"/>
+              <!-- AR in teal -->
+              <text x="104" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#029390" letter-spacing="2">AR</text>
+              <!-- Tagline -->
+              <text x="0" y="46" font-family="DM Sans,sans-serif" font-size="8" fill="#4a6060" letter-spacing="5">WEBАР · PAKISTAN</text>
+            </g>
+          </svg>
+        </div>
+        <div class="preview-light">
+          <svg width="200" height="60" viewBox="0 0 200 60">
+            <g transform="translate(2,8)">
+              <text x="0" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#016e6c" letter-spacing="2" dx="1" dy="2">PAK</text>
+              <text x="0" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#0a0a0a" letter-spacing="2">PAK</text>
+              <rect x="86" y="16" width="14" height="3" fill="#029390"/>
+              <rect x="86" y="21" width="14" height="1.5" fill="#016e6c" opacity="0.5"/>
+              <rect x="86" y="25" width="14" height="1" fill="#029390" opacity="0.3"/>
+              <text x="104" y="30" font-family="Chakra Petch,monospace" font-size="28" font-weight="700" fill="#029390" letter-spacing="2">AR</text>
+              <text x="0" y="46" font-family="DM Sans,sans-serif" font-size="8" fill="#888" letter-spacing="5">WEBАР · PAKISTAN</text>
+            </g>
+          </svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-concept-name">Concept 05 · Enhanced Wordmark</div>
+          <div class="card-title">The Layered Wordmark</div>
+        </div>
+        <div class="card-tags">
+          <span class="tag hl">Most Versatile</span>
+          <span class="tag">Wordmark · Dimensional</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="big-previews">
+          <div class="big-prev" style="background:#0a0a0a;">
+            <div class="prev-label">Dark · Primary</div>
+            <svg width="260" height="70" viewBox="0 0 260 70">
+              <g transform="translate(4,10)">
+                <text x="0" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#016e6c" letter-spacing="3" dx="1.5" dy="2.5">PAK</text>
+                <text x="0" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#f5f7fa" letter-spacing="3">PAK</text>
+                <rect x="102" y="18" width="18" height="4" fill="#04bfbb"/>
+                <rect x="102" y="24" width="18" height="2" fill="#029390" opacity="0.6"/>
+                <rect x="102" y="29" width="18" height="1.5" fill="#016e6c" opacity="0.5"/>
+                <text x="124" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#029390" letter-spacing="3">AR</text>
+                <text x="0" y="54" font-family="DM Sans,sans-serif" font-size="9" fill="#4a6060" letter-spacing="5">WEBАР · PAKISTAN</text>
+              </g>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#f5f7fa;">
+            <div class="prev-label" style="color:#999;">Light · Secondary</div>
+            <svg width="260" height="70" viewBox="0 0 260 70">
+              <g transform="translate(4,10)">
+                <text x="0" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#016e6c" letter-spacing="3" dx="1.5" dy="2.5">PAK</text>
+                <text x="0" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#0a0a0a" letter-spacing="3">PAK</text>
+                <rect x="102" y="18" width="18" height="4" fill="#029390"/>
+                <rect x="102" y="24" width="18" height="2" fill="#016e6c" opacity="0.5"/>
+                <rect x="102" y="29" width="18" height="1.5" fill="#029390" opacity="0.3"/>
+                <text x="124" y="36" font-family="Chakra Petch,monospace" font-size="34" font-weight="700" fill="#029390" letter-spacing="3">AR</text>
+                <text x="0" y="54" font-family="DM Sans,sans-serif" font-size="9" fill="#888" letter-spacing="5">WEBАР · PAKISTAN</text>
+              </g>
+            </svg>
+          </div>
+          <div class="big-prev" style="background:#111618;">
+            <div class="prev-label">App Icon</div>
+            <div class="icon-row" style="justify-content:center;">
+              <div class="icon-box dark" style="width:64px;height:64px;border-radius:14px;">
+                <svg width="50" height="50" viewBox="0 0 60 60">
+                  <text x="4" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#016e6c" dx="1" dy="1.5">PA</text>
+                  <text x="4" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#f5f7fa">PA</text>
+                  <rect x="42" y="24" width="3" height="14" fill="#04bfbb"/>
+                  <text x="47" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#029390">R</text>
+                </svg>
+              </div>
+              <div class="icon-box teal" style="width:48px;height:48px;border-radius:10px;">
+                <svg width="40" height="40" viewBox="0 0 60 60">
+                  <text x="2" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="rgba(255,255,255,0.3)" dx="1" dy="1.5">PA</text>
+                  <text x="2" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="#fff">PA</text>
+                  <rect x="40" y="22" width="3" height="14" fill="rgba(255,255,255,0.8)"/>
+                  <text x="45" y="34" font-family="Chakra Petch,monospace" font-size="22" font-weight="700" fill="rgba(255,255,255,0.8)">R</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-grid">
+          <div>
+            <div class="info-label">Concept & Background</div>
+            <p class="info-text">The Layered Wordmark takes Chakra Petch's naturally technical letterforms and adds dimensional depth through a subtle offset shadow layer (Deep Teal offset behind Pure White "PAK"). The hyphen is transformed from a punctuation mark into a three-line scan beam — the most product-literal element in the entire word. "AR" is set in Core Teal, splitting the brand name into its two meanings.</p>
+          </div>
+          <div>
+            <div class="info-label">The 'Pakkar' Hidden Hook</div>
+            <p class="info-text">The offset shadow behind "PAK" creates an optical illusion of the word "grabbing" its own shadow — a Pakkar (a grip or hold) on its own identity. When read as "PAK grips AR," the layered typography physically enacts the brand name. The scan beam hyphen echoes the quick strike motion of "Pakkar" — a moment of capture.</p>
+          </div>
+          <div>
+            <div class="info-label">Why It Works for PAK-AR</div>
+            <p class="info-text">The wordmark approach is the most versatile of all five concepts — it requires no icon file and works across every medium from embroidery on T-shirts to screen-printed packaging to digital banners. The dimensional shadow effect is subtle enough to remain professional while adding just enough visual intelligence.</p>
+          </div>
+          <div>
+            <div class="info-label">Brand Impact</div>
+            <p class="info-text">The scan beam hyphen is the signature detail — it makes the logo feel alive and in-motion. When a client sees this on a pitch deck, the horizontal scan lines immediately suggest a live AR scan in progress, reinforcing the brand promise before a single word is read.</p>
+          </div>
+        </div>
+        <div class="scores">
+          <div class="score-row"><span class="score-label">App Icon / Avatar</span><div class="score-track"><div class="score-fill" style="width:78%"></div></div><span class="score-val">78%</span></div>
+          <div class="score-row"><span class="score-label">Scalability</span><div class="score-track"><div class="score-fill" style="width:98%"></div></div><span class="score-val">98%</span></div>
+          <div class="score-row"><span class="score-label">Brand Memorability</span><div class="score-track"><div class="score-fill" style="width:88%"></div></div><span class="score-val">88%</span></div>
+          <div class="score-row"><span class="score-label">Pakkar Hook Strength</span><div class="score-track"><div class="score-fill" style="width:80%"></div></div><span class="score-val">80%</span></div>
+          <div class="score-row"><span class="score-label">Enterprise Suitability</span><div class="score-track"><div class="score-fill" style="width:96%"></div></div><span class="score-val">96%</span></div>
+        </div>
+        <div class="verdict-bar">
+          <div class="verdict-label">Verdict</div>
+          <p class="verdict-text">The most enterprise-safe and print-versatile option. Best if PAK-AR needs a logo that works without a symbol — on letterheads, documents, website headers, and slide decks. The scan beam hyphen is clever without being gimmicky. Slightly less distinctive as a standalone app icon, but pairs beautifully with Concept 01 as a combined system.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FINAL RECOMMENDATION -->
+<div class="final-rec">
+  <div class="fr-label">✦ Strategic Logo Recommendation</div>
+  <div class="fr-title">The AR Targeting Frame — Concept 01</div>
+  <p class="fr-body">
+    Based on PAK-AR's priorities — app icon and social media avatar performance, bold & futuristic first impression, Both dark and light contexts, and the Pakkar hidden hook — <strong style="color:#c0d8e0;">Concept 01 (The AR Targeting Frame)</strong> is the strongest strategic choice.<br><br>
+    The nested square targeting frame reduces to a perfect app icon at 16×16px while retaining full meaning at hero scale. It works flawlessly on both Absolute Black and Pure White in the confirmed High Contrast palette. The crosshair and center dot create an authentic AR HUD aesthetic that no competitor in Pakistan owns.<br><br>
+    <strong style="color:#c0d8e0;">Recommended combination:</strong> Use Concept 01 as your primary icon mark, and pair it with Concept 05's scan-beam wordmark treatment for full horizontal logo lockups. This gives PAK-AR a complete two-mode logo system — a standalone icon for app/avatar contexts and a full wordmark for enterprise materials.
+  </p>
+</div>
+
+<footer>
+  <div class="f-l">PAK-AR · Logo Concept Report · 2025</div>
+  <div class="f-r">Click any concept to expand · All logos rendered in #029390 · Chakra Petch</div>
+</footer>
+
+<script>
+  function toggle(card) {
+    const isActive = card.classList.contains('active');
+    document.querySelectorAll('.logo-card').forEach(c => c.classList.remove('active'));
+    if (!isActive) card.classList.add('active');
+  }
+</script>
+</body>
+</html>
